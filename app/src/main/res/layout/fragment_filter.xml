@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/filter_news_desk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:gravity="center"
+        android:text="@string/news_desk_title"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/news_desk_sports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/filter_news_desk"
+        android:layout_marginLeft="@dimen/fragmentMarginLeft"
+        android:layout_marginTop="@dimen/fragmentMarginTop"
+        android:scaleX="0.85"
+        android:scaleY="0.85"
+        android:text="@string/desk_sports"
+        android:textColor="@android:color/black" />
+
+    <CheckBox
+        android:id="@+id/news_desk_arts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/news_desk_sports"
+        android:layout_below="@id/news_desk_sports"
+        android:scaleX="0.85"
+        android:scaleY="0.85"
+        android:text="@string/desk_arts"
+        android:textColor="@android:color/black" />
+
+    <CheckBox
+        android:id="@+id/news_desk_fashion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/news_desk_arts"
+        android:layout_below="@id/news_desk_arts"
+        android:scaleX="0.85"
+        android:scaleY="0.85"
+        android:text="@string/desk_fashion_style"
+        android:textColor="@android:color/black" />
+
+    <CheckBox
+        android:id="@+id/news_desk_technology"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/news_desk_fashion"
+        android:layout_below="@id/news_desk_fashion"
+        android:scaleX="0.85"
+        android:scaleY="0.85"
+        android:text="@string/desk_technology"
+        android:textColor="@android:color/black" />
+
+    <View
+        android:id="@+id/divider_desks"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_below="@id/news_desk_technology"
+        android:layout_marginLeft="@dimen/divider_margin_left_right"
+        android:layout_marginRight="@dimen/divider_margin_left_right"
+        android:layout_marginTop="@dimen/marginTop"
+        android:background="@color/colorLightGrey" />
+
+    <TextView
+        android:id="@+id/filter_sort_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_desks"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/fragmentTitleMarginTop"
+        android:text="@string/sort_order"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/filter_sort_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/filter_sort_order"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/fragmentMarginTop"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/fragmentTextSize" />
+
+    <View
+        android:id="@+id/divider_sort"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_below="@id/filter_sort_type"
+        android:layout_marginLeft="@dimen/divider_margin_left_right"
+        android:layout_marginRight="@dimen/divider_margin_left_right"
+        android:layout_marginTop="@dimen/marginTop"
+        android:background="@color/colorLightGrey" />
+
+    <TextView
+        android:id="@+id/filter_begin_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_sort"
+        android:layout_marginTop="@dimen/fragmentTitleMarginTop"
+        android:gravity="center"
+        android:text="@string/begin_date"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/filter_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/filter_begin_date"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/fragmentMarginTop"
+        android:hint="@string/date_hint"
+        android:inputType="date"
+        android:textColor="@color/colorTitle"
+        android:textColorHint="@android:color/black"
+        android:textSize="@dimen/textSize" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/filter_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/filter_date"
+        android:layout_marginBottom="@dimen/marginAll"
+        android:layout_marginRight="@dimen/marginAll"
+        android:elevation="10dp"
+        android:src="@drawable/ic_save" />
+
+</RelativeLayout>

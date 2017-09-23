@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // margins
+
+    <dimen name="marginTop">10dp</dimen>
+    <dimen name="marginLeft">10dp</dimen>
+    <dimen name="marginAll">10dp</dimen>
+    <dimen name="cardCorberRadius">4dp</dimen>
+    <dimen name="cardElevation">5dp</dimen>
+    <dimen name="list_image_height">120dp</dimen>
+    <dimen name="list_image_width">150dp</dimen>
+    <dimen name="fragmentTitleMarginTop">15dp</dimen>
+    <dimen name="fragmentMarginTop">3dp</dimen>
+    <dimen name="fragmentMarginLeft">120dp</dimen>
+
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="divider_margin_left_right">20dp</dimen>
+    // sizes
+    <dimen name="titleSize">18sp</dimen>
+    <dimen name="textSize">14sp</dimen>
+    <dimen name="fragmentTextSize">12sp</dimen>
+
+</resources>

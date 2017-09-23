@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TheNYTimes</string>
+    <string name="search">Search</string>
+    <string name="news_desk_title">News Desks</string>
+    <string name="sort_order">Sort Order</string>
+    <string name="begin_date">Begin Date</string>
+    <string name="desk_sports">Sports</string>
+    <string name="desk_arts">Arts</string>
+    <string name="desk_fashion_style">Fashion &amp; Style</string>
+    <string name="desk_technology">Technology</string>
+    <string name="date_hint">MM/DD/YYYY</string>
+
+    <string-array name="filter_sort_array">
+        <item>Newest</item>
+        <item>Oldest</item>
+    </string-array>
+</resources>
