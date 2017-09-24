@@ -25,14 +25,14 @@ public class Application extends android.app.Application {
                 .build();
 
         this.sContext = getApplicationContext();
-        
+
     }
 
     public NetworkComponent getNetworkComponent() {
         return mNetworkComponent;
     }
 
-    public static Context getContext(){
+    public static Context getContext() {
         return sContext;
     }
 }

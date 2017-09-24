@@ -1,6 +1,7 @@
 package thenytimes.android.example.com.thenytimes.dagger.component;
 
 import javax.inject.Singleton;
+
 import dagger.Component;
 
 import thenytimes.android.example.com.thenytimes.dagger.module.ApplicationModule;
@@ -15,6 +16,8 @@ import thenytimes.android.example.com.thenytimes.activities.MainActivity;
 public interface NetworkComponent {
 
     void inject(ListFragment fragment);
+
     void inject(MainActivity activity);
+
     void inject(FilterFragment fragment);
 }

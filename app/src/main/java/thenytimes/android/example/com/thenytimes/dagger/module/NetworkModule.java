@@ -1,6 +1,7 @@
 package thenytimes.android.example.com.thenytimes.dagger.module;
 
 import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;

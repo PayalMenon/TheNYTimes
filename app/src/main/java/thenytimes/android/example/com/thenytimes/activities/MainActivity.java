@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -75,21 +74,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-
-        if (isFinishing()) {
-
-            FragmentManager manager = getSupportFragmentManager();
-
-            ListFragment listFragment = (ListFragment) manager.findFragmentByTag(Constants.FRAGMENT_LIST);
-            manager.beginTransaction().remove(listFragment).commit();
-
-            mSettings.clearAll();
-        }
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
@@ -120,11 +104,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void setListFragmentListener(ListFragmentListener listener) {
-
-        this.mListFragmentListener = listener;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -139,18 +118,24 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void addListFragment() {
+    @Override
+    protected void onPause() {
+        super.onPause();
 
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        ListFragment fragment = (ListFragment) manager.findFragmentByTag(Constants.FRAGMENT_LIST);
+        if (isFinishing()) {
 
-        if (fragment == null) {
+            FragmentManager manager = getSupportFragmentManager();
 
-            fragment = new ListFragment();
-            transaction.add(R.id.fragment_container, fragment, Constants.FRAGMENT_LIST);
-            transaction.commit();
+            ListFragment listFragment = (ListFragment) manager.findFragmentByTag(Constants.FRAGMENT_LIST);
+            manager.beginTransaction().remove(listFragment).commit();
+
+            mSettings.clearAll();
         }
+    }
+
+    public void setListFragmentListener(ListFragmentListener listener) {
+
+        this.mListFragmentListener = listener;
     }
 
     public void getFeedList(String query) {
@@ -162,15 +147,15 @@ public class MainActivity extends AppCompatActivity {
         queryMap.put(Constants.QUERY_KEY_PAGE_NUMBER, mPageNumber);
 
         String sortType = mSettings.getString(Constants.QUERY_KEY_SORT, null);
-        if(sortType != null) {
+        if (sortType != null) {
             queryMap.put(Constants.QUERY_KEY_SORT, sortType);
         }
         String beginDate = mSettings.getString(Constants.QUERY_KEY_BEGIN_DATE, null);
-        if(beginDate != null) {
+        if (beginDate != null) {
             queryMap.put(Constants.QUERY_KEY_BEGIN_DATE, beginDate);
         }
         String newsDesk = mSettings.getString(Constants.QUERY_KEY_NEWS_DESK, null);
-        if(newsDesk != null) {
+        if (newsDesk != null) {
             StringBuilder deskQuery = new StringBuilder();
             deskQuery.append(Constants.QUERY_KEY_NEWS_DESK + ":(");
             deskQuery.append(newsDesk + ")");
@@ -192,10 +177,26 @@ public class MainActivity extends AppCompatActivity {
         mSpinner.setVisibility(View.GONE);
     }
 
+    private void addListFragment() {
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        ListFragment fragment = (ListFragment) manager.findFragmentByTag(Constants.FRAGMENT_LIST);
+
+        if (fragment == null) {
+
+            fragment = new ListFragment();
+            transaction.add(R.id.fragment_container, fragment, Constants.FRAGMENT_LIST);
+            transaction.commit();
+        }
+    }
+
     public interface ListFragmentListener {
 
         void getNewsList(Call<FeedResponse> call, String queryString);
+
         void clearList();
+
         void onItemClicked(int position);
     }
 }

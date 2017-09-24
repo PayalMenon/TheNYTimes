@@ -66,14 +66,14 @@ public class FilterFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 String sortType = mSortView.getText().toString();
-                if(sortType != null && !sortType.isEmpty()) {
+                if (sortType != null && !sortType.isEmpty()) {
                     mSettings.setString(Constants.QUERY_KEY_SORT, sortType);
                 }
                 if (!mDeskTypes.toString().isEmpty()) {
                     mSettings.setString(Constants.QUERY_KEY_NEWS_DESK, mDeskTypes.toString());
                 }
                 String beginDate = mBeginDateView.getText().toString();
-                if(beginDate != null && !beginDate.isEmpty()) {
+                if (beginDate != null && !beginDate.isEmpty()) {
                     mSettings.setString(Constants.QUERY_KEY_BEGIN_DATE, beginDate);
                 }
                 ((MainActivity) getActivity()).onFilterSaved();
