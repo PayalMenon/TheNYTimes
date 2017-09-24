@@ -19,7 +19,8 @@ public class Constants {
     public static final String DESK_TYPE_ARTS = "Arts";
     public static final String DESK_TYPE_TECHNOLOGY = "Technology";
     public static final String DESK_TYPE_SPORTS = "Sports";
-    public static final String DESK_TYPE_FASHION= "FASHION & STYLE";
+    public static final String DESK_TYPE_FASHION= "Fashion & Style";
+    public static final String DESK_FASHION= "Fashion";
 
     public static final String NEWS_SETTINGS = "news_settings";
 

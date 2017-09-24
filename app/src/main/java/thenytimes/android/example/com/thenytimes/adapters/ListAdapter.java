@@ -1,6 +1,7 @@
 package thenytimes.android.example.com.thenytimes.adapters;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -69,6 +70,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             if (details.getDesk() != null) {
                 holder.mItemRace.setVisibility(View.VISIBLE);
+                holder.mItemRace.setBackground(getDeskColor(details.getDesk()));
                 holder.mItemRace.setText(details.getDesk().toUpperCase());
             } else {
                 holder.mItemRace.setVisibility(View.GONE);
@@ -96,6 +98,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             if (details.getDesk() != null) {
                 holder.mItemRace.setVisibility(View.VISIBLE);
+                holder.mItemRace.setBackground(getDeskColor(details.getDesk()));
                 holder.mItemRace.setText(details.getDesk().toUpperCase());
             } else {
                 holder.mItemRace.setVisibility(View.GONE);
@@ -135,6 +138,25 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public void updateFeedList(List<FeedDetails> list) {
         this.mFeedList = list;
+    }
+
+    private ColorDrawable getDeskColor(String desk) {
+
+        ColorDrawable drawable = null;
+
+        if (desk.contains(Constants.DESK_TYPE_SPORTS)) {
+            drawable = new ColorDrawable(mContext.getResources().getColor(R.color.colorSports));
+        } else if (desk.contains(Constants.DESK_FASHION)) {
+            drawable = new ColorDrawable(mContext.getResources().getColor(R.color.colorFashion));
+        } else if (desk.contains(Constants.DESK_TYPE_TECHNOLOGY)) {
+            drawable = new ColorDrawable(mContext.getResources().getColor(R.color.colorTechnology));
+        } else if (desk.contains(Constants.DESK_TYPE_ARTS)) {
+            drawable = new ColorDrawable(mContext.getResources().getColor(R.color.colorArts));
+        } else {
+            drawable = new ColorDrawable(mContext.getResources().getColor(R.color.colorBackgroundRace));
+        }
+
+        return drawable;
     }
 
     public class ListHolder extends RecyclerView.ViewHolder {
