@@ -16,6 +16,11 @@ public class Constants {
     public static final String QUERY_KEY_PAGE_NUMBER = "page";
     public static final String DEFAULT_QUERY_BREAKING_NEWS = "breaking news";
 
+    public static final String DESK_TYPE_ARTS = "Arts";
+    public static final String DESK_TYPE_TECHNOLOGY = "Technology";
+    public static final String DESK_TYPE_SPORTS = "Sports";
+    public static final String DESK_TYPE_FASHION= "FASHION & STYLE";
+
     public static final String NEWS_SETTINGS = "news_settings";
 
     public static final int SIMPLE_LIST = 0;

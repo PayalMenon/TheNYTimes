@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar mActionBar;
+    @BindView(R.id.list_progress_Spinner)
+    ProgressBar mSpinner;
 
     private ListFragmentListener mListFragmentListener;
     private boolean initalLaunch;
@@ -80,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
             ListFragment listFragment = (ListFragment) manager.findFragmentByTag(Constants.FRAGMENT_LIST);
             manager.beginTransaction().remove(listFragment).commit();
+
+            mSettings.clearAll();
         }
     }
 
@@ -148,6 +154,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getFeedList(String query) {
+
+        mSpinner.setVisibility(View.VISIBLE);
+
         Map<String, Object> queryMap = new HashMap<>();
         queryMap.put(Constants.QUERY, query);
         queryMap.put(Constants.QUERY_KEY_PAGE_NUMBER, mPageNumber);
@@ -162,11 +171,25 @@ public class MainActivity extends AppCompatActivity {
         }
         String newsDesk = mSettings.getString(Constants.QUERY_KEY_NEWS_DESK, null);
         if(newsDesk != null) {
-            queryMap.put(Constants.QUERY_KEY_NEWS_DESK, newsDesk);
+            StringBuilder deskQuery = new StringBuilder();
+            deskQuery.append(Constants.QUERY_KEY_NEWS_DESK + ":(");
+            deskQuery.append(newsDesk + ")");
+            queryMap.put("fq", deskQuery.toString());
         }
 
         Call<FeedResponse> call = mService.getNewsFeed(queryMap);
         this.mListFragmentListener.getNewsList(call, query);
+    }
+
+    public void onFilterSaved() {
+        FragmentManager manager = getSupportFragmentManager();
+
+        FilterFragment fragment = (FilterFragment) manager.findFragmentByTag(Constants.FRAGMENT_FILTER);
+        manager.beginTransaction().remove(fragment).commit();
+    }
+
+    public void dismissSpinner() {
+        mSpinner.setVisibility(View.GONE);
     }
 
     public interface ListFragmentListener {

@@ -25,6 +25,7 @@ public class Application extends android.app.Application {
                 .build();
 
         this.sContext = getApplicationContext();
+        
     }
 
     public NetworkComponent getNetworkComponent() {

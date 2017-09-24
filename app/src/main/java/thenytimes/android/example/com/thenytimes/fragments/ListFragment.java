@@ -99,6 +99,7 @@ public class ListFragment extends Fragment implements MainActivity.ListFragmentL
         call.enqueue(new Callback<FeedResponse>() {
             @Override
             public void onResponse(Call<FeedResponse> call, Response<FeedResponse> response) {
+                ((MainActivity) getActivity()).dismissSpinner();
                 if (response != null && response.isSuccessful()) {
                     FeedList list = response.body().getResponse();
                     mFeedList.addAll(list.getDocs());
@@ -110,6 +111,7 @@ public class ListFragment extends Fragment implements MainActivity.ListFragmentL
 
             @Override
             public void onFailure(Call<FeedResponse> call, Throwable t) {
+                ((MainActivity) getActivity()).dismissSpinner();
                 Log.d("Failed", "Failed");
             }
         });

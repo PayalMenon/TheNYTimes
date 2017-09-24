@@ -14,6 +14,8 @@
     <dimen name="fragmentMarginTop">3dp</dimen>
     <dimen name="fragmentMarginLeft">120dp</dimen>
 
+    <dimen name="filtermarginRight">20dp</dimen>
+
     <dimen name="divider_height">1dp</dimen>
     <dimen name="divider_margin_left_right">20dp</dimen>
     // sizes
