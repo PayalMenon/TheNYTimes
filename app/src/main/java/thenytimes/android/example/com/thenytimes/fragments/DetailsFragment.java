@@ -1,9 +1,15 @@
 package thenytimes.android.example.com.thenytimes.fragments;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -44,6 +50,7 @@ public class DetailsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
         ButterKnife.bind(this, view);
         return view;
@@ -53,7 +60,6 @@ public class DetailsFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ((MainActivity) getActivity()).getSupportActionBar().hide();
         initializeWebView();
     }
 
@@ -74,6 +80,32 @@ public class DetailsFragment extends Fragment {
         });
         mDetailView.setWebViewClient(new FeedDetailWebViewClient());
         mDetailView.loadUrl(getArguments().getString(Constants.DETAIL_FRAGMENT_URL));
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.details_menu, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.menu_item_share);
+        ShareActionProvider provider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        if(searchItem != null) {
+            searchItem.setVisible(false);
+        }
+
+        MenuItem filterItem = menu.findItem(R.id.action_filter);
+        if(filterItem != null) {
+            filterItem.setVisible(false);
+        }
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent .putExtra(Intent.EXTRA_TEXT, mDetailView.getUrl());
+
+        provider.setShareIntent(shareIntent);
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     private class FeedDetailWebViewClient extends WebViewClient {
