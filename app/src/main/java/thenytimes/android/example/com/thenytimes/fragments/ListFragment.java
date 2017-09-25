@@ -89,6 +89,8 @@ public class ListFragment extends Fragment implements MainActivity.ListFragmentL
                 }
             }
         });
+
+        ((MainActivity) getActivity()).getSupportActionBar().show();
     }
 
     @Override

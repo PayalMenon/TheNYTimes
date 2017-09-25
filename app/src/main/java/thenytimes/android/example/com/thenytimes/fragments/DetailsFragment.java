@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import thenytimes.android.example.com.thenytimes.R;
+import thenytimes.android.example.com.thenytimes.activities.MainActivity;
 import thenytimes.android.example.com.thenytimes.utils.Constants;
 
 public class DetailsFragment extends Fragment {
@@ -52,6 +53,7 @@ public class DetailsFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        ((MainActivity) getActivity()).getSupportActionBar().hide();
         initializeWebView();
     }
 
